@@ -1,3 +1,3 @@
 # A simple backend of a youtube like dashboard
 
-This is a simple beginner friendly dashboard
+This is a simple beginner friendly dashboard currently in development
