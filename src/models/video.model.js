@@ -1,4 +1,8 @@
 import mongoose,{Schema} from "mongoose";
+import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
+
+// we use mongooseAggregatePaginate
+//for watch history schema
 
 const videoSchema = new Schema(
     {
@@ -19,8 +23,22 @@ const videoSchema = new Schema(
             required:true
         },
         duration:{
+            type:Number,
+            required:true
+        },
+        views:{
             type: Number,
+            default: 0
+        },
+        isPublished:{
+            type:Boolean,
+            default:true
+        },
+        owner:{
+            type:Schema.Types.ObjectId,
+            ref:"User"
         }
+
 
 
 
@@ -29,5 +47,9 @@ const videoSchema = new Schema(
         timestamps:true
     }
 )
+
+//used as a plugin
+videoSchema.plugin(mongooseAggregatePaginate)
+
 
 export const Video = mongoose.model("Video",videoSchema)
