@@ -70,7 +70,7 @@ const userSchema=new Schema(
 //next is the middleware flag
 //we can call this next
 userSchema.pre("save" , async function (next) {
-    if(!this.isModified("passowrd"))
+    if(!this.isModified("password"))
         return next();
     this.password = await bcrypt.hash(this.password , 10)
     next()
